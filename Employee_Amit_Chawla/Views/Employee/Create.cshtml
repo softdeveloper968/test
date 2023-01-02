@@ -1,0 +1,73 @@
+﻿@model Employee_Amit_Chawla.Models.EmployeeViewModel
+
+
+<div class="container shadow p-5">
+    <div class="row pb-2">
+        <h2>Add Employee</h2>
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Emp_First_Name">Employee First Name</label>
+                <input type="text" class="form-control mb-3" asp-for="Emp_First_Name" placeholder="Enter Name">
+                <span asp-validation-for="Emp_First_Name" class=" alert-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="Emp_Last_Name">Employee Last Name</label>
+                <input type="text" class="form-control mb-3" asp-for="Emp_Last_Name" placeholder="Enter Name">
+                <span asp-validation-for="Emp_Last_Name" class=" alert-danger"></span>
+            </div>
+
+             <div class="form-group col-md-6">
+                <label asp-for="Profile_Picture">Profile picture</label>
+                <input type="file" class="form-control mb-3" asp-for="File">
+                <span asp-validation-for="File" class=" alert-danger"></span>
+            </div>
+
+             <div class="form-group col-md-6">
+                <label asp-for="Date_Of_Birth">Date of Birth</label>
+                <input type="date" class="form-control mb-3" asp-for="Date_Of_Birth" placeholder="Enter Name">
+                <span asp-validation-for="Date_Of_Birth" class=" alert-danger"></span>
+            </div>
+
+              <div class="form-group col-md-6">
+                <label asp-for="Salary">Salary</label>
+                <input type="number" class="form-control mb-3" asp-for="Salary" placeholder="Enter Name">
+                <span asp-validation-for="Salary" class=" alert-danger"></span>
+            </div>
+
+            
+              <div class="form-group col-md-6">
+                <label asp-for="Dept_Id">Department</label>
+                <select asp-for="Dept_Id" asp-items="@(new SelectList(ViewBag.Departments,"Dept_Id","Dept_Name"))"></select>
+               @* <input  class="form-control mb-3" asp-for="Dept_Id" placeholder="Enter Name">*@
+                <span asp-validation-for="Dept_Id" class=" alert-danger"></span>
+            </div><br />
+
+            
+              <div class="form-group col-md-6">
+                <label asp-for="Is_Active">Active Status</label>
+                <input type="checkbox" asp-for="Is_Active" placeholder="Enter Name">
+                <span asp-validation-for="Is_Active" class=" alert-danger"></span>
+            </div><br />
+        </div>
+
+
+        <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Save</button>
+        <a asp-controller="Employee" asp-action="Index" class="btn btn-lg btn-warning p-2">Back To List</a>
+    </form>
+
+</div>
+
+
+@*//for front end validations*@
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}
